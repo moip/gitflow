@@ -17,7 +17,7 @@ if [ -z "$REPO_NAME" ] ; then
 fi
 
 if [ -z "$REPO_HOME" ] ; then
-	REPO_HOME="http://github.com/nvie/gitflow.git"
+	REPO_HOME="https://github.com/moip/gitflow.git"
 fi
 
 EXEC_FILES="git-flow"
@@ -57,19 +57,6 @@ case "$1" in
 		# 	git clone "$REPO_HOME" "$REPO_NAME"
 		# fi
 
-		## Installing Hub ##
-		echo "Cloning Hub"
-		git clone https://github.com/github/hub.git ~/.moip/hub
-		cd ~/.moip/hub
-		echo "Building Hub"
-		script/build
-		cp ./hub ~/.hub
-		echo "Export PATH"
-		echo "export PATH=$PATH:~/.hub/bin" >> ~/.bashrc
-		alias git=hub
-		echo "Reload bashrc"
-		source ~/.bashrc
-
 		if [ -f "$REPO_NAME/$SUBMODULE_FILE" ] ; then
 			echo "Submodules look up to date"
 		else
@@ -87,6 +74,20 @@ case "$1" in
 		for script_file in $SCRIPT_FILES ; do
 			install -v -m 0644 "$REPO_NAME/$script_file" "$INSTALL_PREFIX"
 		done
+
+    ## Installing Hub ##
+    echo "Cloning Hub"
+    git clone https://github.com/github/hub.git ~/.moip/hub
+    cd ~/.moip/hub
+    echo "Building Hub"
+    script/build
+    cp ./hub ~/.hub
+    echo "Export PATH"
+    echo "export PATH=$PATH:~/.hub/bin" >> ~/.bashrc
+    alias git=hub
+    echo "Reload bashrc"
+    source ~/.bashrc
+
 		exit
 		;;
 esac
