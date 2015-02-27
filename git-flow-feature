@@ -311,6 +311,7 @@ cmd_finish() {
 	fi
 
 	# merge into BASE
+  echo "merge into BASE"
 	git_do checkout "$DEVELOP_BRANCH"
 	if [ "$(git rev-list -n2 "$DEVELOP_BRANCH..$BRANCH" | wc -l)" -eq 1 ]; then
 		git_do merge --ff "$BRANCH"
