@@ -82,7 +82,7 @@ case "$1" in
     echo "Building Hub"
     script/build
     cp ./hub ~/.hub
-    echo "Export PATH"
+    echo "Exporting PATH"
     echo "export PATH=$PATH:~/.hub/bin" >> ~/.bashrc
     alias git=hub
     echo "Reload bashrc"
