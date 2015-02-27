@@ -326,6 +326,7 @@ require_branches_equal() {
 }
 
 open_pull_request() {
+
   require_branch "$BRANCH"
 
   git_do push "$ORIGIN" "$BRANCH"
