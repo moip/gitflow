@@ -50,12 +50,12 @@ case "$1" in
 		;;
 	*)
 		echo "Installing git-flow to $INSTALL_PREFIX"
-		if [ -d "$REPO_NAME" -a -d "$REPO_NAME/.git" ] ; then
+		# if [ -d "$REPO_NAME" -a -d "$REPO_NAME/.git" ] ; then
 			echo "Using existing repo: $REPO_NAME"
-		else
-			echo "Cloning repo from GitHub to $REPO_NAME"
-			git clone "$REPO_HOME" "$REPO_NAME"
-		fi
+		# else
+		# 	echo "Cloning repo from GitHub to $REPO_NAME"
+		# 	git clone "$REPO_HOME" "$REPO_NAME"
+		# fi
 		if [ -f "$REPO_NAME/$SUBMODULE_FILE" ] ; then
 			echo "Submodules look up to date"
 		else
