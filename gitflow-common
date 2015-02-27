@@ -328,7 +328,7 @@ require_branches_equal() {
 open_pull_request() {
   require_branch "$BRANCH"
 
-  git_do push "$ORIGIN" "$BRANCH"
+  git_do push -u "$ORIGIN" "$BRANCH"
   hub pull-request -b "$ORIGIN/$DEVELOP_BRANCH" -h "$BRANCH"
   git_do branch -d "$BRANCH"
 
