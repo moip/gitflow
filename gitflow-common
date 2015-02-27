@@ -328,11 +328,13 @@ require_branches_equal() {
 open_pull_request() {
   require_branch "$BRANCH"
 
+  git_do push "$ORIGIN" "$BRANCH"
   hub pull-request -b "$ORIGIN/$DEVELOP_BRANCH" -h "$BRANCH"
   git_do branch -d "$BRANCH"
 
   echo
   echo "Summary of actions:"
+  echo "- Pushing feature branch '$BRANCH' to $ORIGIN"
   echo "- Open pull request the feature branch '$BRANCH'"
   echo "- Delete local branch '$BRANCH'"
   echo
