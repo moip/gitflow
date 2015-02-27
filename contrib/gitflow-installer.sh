@@ -56,6 +56,20 @@ case "$1" in
 		# 	echo "Cloning repo from GitHub to $REPO_NAME"
 		# 	git clone "$REPO_HOME" "$REPO_NAME"
 		# fi
+
+		## Installing Hub ##
+		echo "Cloning Hub"
+		git clone https://github.com/github/hub.git ~/.moip/hub
+		cd ~/.moip/hub
+		echo "Building Hub"
+		script/build
+		cp ./hub ~/.hub
+		echo "Export PATH"
+		echo "export PATH=$PATH:~/.hub/bin" >> ~/.bashrc
+		alias git=hub
+		echo "Reload bashrc"
+		source ~/.bashrc
+
 		if [ -f "$REPO_NAME/$SUBMODULE_FILE" ] ; then
 			echo "Submodules look up to date"
 		else

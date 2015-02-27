@@ -340,8 +340,11 @@ cmd_finish() {
 		exit 1
 	fi
 
+  # open github pull request
+  open_pull_request
+
 	# when no merge conflict is detected, just clean up the feature branch
-	helper_finish_cleanup
+	# helper_finish_cleanup
 }
 
 helper_finish_cleanup() {
@@ -394,8 +397,6 @@ cmd_publish() {
 	git_do config "branch.$BRANCH.remote" "$ORIGIN"
 	git_do config "branch.$BRANCH.merge" "refs/heads/$BRANCH"
 	git_do checkout "$BRANCH"
-  hub pull-request -b develop -h "$BRANCH"
-
 
 	echo
 	echo "Summary of actions:"
