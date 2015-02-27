@@ -338,4 +338,5 @@ open_pull_request() {
   echo "- Open pull request the feature branch '$BRANCH'"
   echo "- Delete local branch '$BRANCH'"
   echo
+  echo
 }
