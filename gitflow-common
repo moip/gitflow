@@ -327,7 +327,9 @@ require_branches_equal() {
 
 open_pull_request() {
   require_branch "$BRANCH"
+
   hub pull-request -b "$ORIGIN/$DEVELOP_BRANCH" -h "$BRANCH"
+  git_do branch -d "$BRANCH"
 
   echo
   echo "Summary of actions:"
