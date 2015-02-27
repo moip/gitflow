@@ -329,7 +329,7 @@ open_pull_request() {
   require_branch "$BRANCH"
   hub pull-request -b "$ORIGIN/$DEVELOP_BRANCH" -h "$BRANCH"
   git_do branch -D "$BRANCH"
-  git_do checkout "$ORIGIN/$DEVELOP_BRANCH"
+  git_do checkout "$DEVELOP_BRANCH"
 
   echo
   echo "Summary of actions:"
